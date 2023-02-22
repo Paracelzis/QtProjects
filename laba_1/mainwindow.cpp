@@ -15,6 +15,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_2->setValidator(&validator);
 
     this->setWindowTitle ("Калькулятор");
+          
+          
+          
+          
+          
     connect(ui->pushButton, &QPushButton::clicked,this,&MainWindow::on_PushButton_Clicked);
     connect(ui->pushButton_2, &QPushButton::clicked,this,&MainWindow::on_PushButton_Clicked);
     connect(ui->pushButton_3, &QPushButton::clicked,this,&MainWindow::on_PushButton_Clicked);
