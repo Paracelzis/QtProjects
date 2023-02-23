@@ -66,6 +66,7 @@ void MainWindow::on_CheckBox_Clicked()
         tmp += "Цена сигнализации - 15562 руб.\n";
     }
 
+
     if (all == 0)
     {
         tmp += "Не выбрано ни одного комплектующего.\n";
