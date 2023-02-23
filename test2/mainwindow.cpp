@@ -77,6 +77,7 @@ void MainWindow::on_CheckBox_Clicked()
     }
 
     QString str,str2;
+
     str.setNum(all,'g',15);
     str += " руб.\n";
 

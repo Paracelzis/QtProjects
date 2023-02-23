@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 9.0.1, 2023-02-22T10:10:28. -->
+<!-- Written by QtCreator 9.0.1, 2023-02-23T11:19:06. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{1a841b91-5d7c-4c95-a5fa-9b242627c04d}</value>
+  <value type="QByteArray">{d3acee21-3885-41fc-bdc4-a1833d8e853a}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -105,7 +105,7 @@
 -DCMAKE_CXX_COMPILER:FILEPATH=%{Compiler:Executable:Cxx}
 -DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}</value>
     <value type="int" key="EnableQmlDebugging">0</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HP\Documents\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HOME-PC\Documents\QtProjects\QtProjects\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="QString" key="CMakeProjectManager.MakeStep.BuildPreset"></value>
@@ -159,7 +159,7 @@
 -DCMAKE_C_COMPILER:FILEPATH=%{Compiler:Executable:C}
 -DCMAKE_CXX_COMPILER:FILEPATH=%{Compiler:Executable:Cxx}
 -DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HP\Documents\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HOME-PC\Documents\QtProjects\QtProjects\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="QString" key="CMakeProjectManager.MakeStep.BuildPreset"></value>
@@ -211,7 +211,7 @@
 -DCMAKE_C_COMPILER:FILEPATH=%{Compiler:Executable:C}
 -DCMAKE_CXX_COMPILER:FILEPATH=%{Compiler:Executable:Cxx}
 -DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HP\Documents\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-RelWithDebInfo</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HOME-PC\Documents\QtProjects\QtProjects\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-RelWithDebInfo</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="QString" key="CMakeProjectManager.MakeStep.BuildPreset"></value>
@@ -264,7 +264,7 @@
 -DCMAKE_CXX_COMPILER:FILEPATH=%{Compiler:Executable:Cxx}
 -DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}</value>
     <value type="int" key="EnableQmlDebugging">0</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HP\Documents\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HOME-PC\Documents\QtProjects\QtProjects\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="QString" key="CMakeProjectManager.MakeStep.BuildPreset"></value>
@@ -316,7 +316,7 @@
 -DCMAKE_C_COMPILER:FILEPATH=%{Compiler:Executable:C}
 -DCMAKE_CXX_COMPILER:FILEPATH=%{Compiler:Executable:Cxx}
 -DCMAKE_CXX_FLAGS_INIT:STRING=%{Qt:QML_DEBUG_FLAG}</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HP\Documents\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-MinSizeRel</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\HOME-PC\Documents\QtProjects\QtProjects\laba_1\..\build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-MinSizeRel</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="QString" key="CMakeProjectManager.MakeStep.BuildPreset"></value>
@@ -386,7 +386,7 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/HP/Documents/build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Debug</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/HOME-PC/Documents/QtProjects/QtProjects/build-laba_1-Desktop_Qt_6_4_2_MinGW_64_bit-Debug</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
