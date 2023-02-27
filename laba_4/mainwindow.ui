@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>343</width>
-    <height>396</height>
+    <width>318</width>
+    <height>353</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>343</width>
-    <height>396</height>
+    <width>318</width>
+    <height>353</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,54 +28,66 @@ font:700 12pt &quot;Segoe UI&quot;;
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>20</y>
-      <width>281</width>
-      <height>286</height>
+      <width>275</width>
+      <height>250</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout_3">
-     <item row="1" column="0">
-      <layout class="QFormLayout" name="formLayout_3">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Количество</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="quantity"/>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="resultButton">
-         <property name="text">
-          <string>Посчитать</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Итого</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="total"/>
-       </item>
-      </layout>
-     </item>
+    <layout class="QGridLayout" name="gridLayout_5">
      <item row="0" column="0">
-      <layout class="QGridLayout" name="gridLayout_2">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ФотоАтелье&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="0">
-        <layout class="QGridLayout" name="gridLayout">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>Размер фото</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="1" column="0">
+             <widget class="QRadioButton" name="medium">
+              <property name="text">
+               <string>10 X 15</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QRadioButton" name="little">
+              <property name="text">
+               <string>9 X 12</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QRadioButton" name="large">
+              <property name="text">
+               <string>20 X 30</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
          <item row="0" column="1">
           <widget class="QGroupBox" name="groupBox_2">
            <property name="title">
             <string>Бумага</string>
            </property>
-           <layout class="QFormLayout" name="formLayout_2">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
             <item row="0" column="0">
              <widget class="QRadioButton" name="glossy">
               <property name="text">
@@ -93,42 +105,33 @@ font:700 12pt &quot;Segoe UI&quot;;
            </layout>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QGroupBox" name="groupBox">
-           <property name="title">
-            <string>Размер фото</string>
-           </property>
-           <layout class="QFormLayout" name="formLayout">
-            <item row="0" column="0">
-             <widget class="QRadioButton" name="little">
-              <property name="text">
-               <string>9 X 12</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QRadioButton" name="medium">
-              <property name="text">
-               <string>10 X 15</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QRadioButton" name="large">
-              <property name="text">
-               <string>20 X 30</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
         </layout>
        </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ФотоАтелье&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>Количество</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="quantity"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Итого</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="total">
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -142,7 +145,7 @@ font:700 12pt &quot;Segoe UI&quot;;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>343</width>
+     <width>318</width>
      <height>27</height>
     </rect>
    </property>

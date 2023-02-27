@@ -5,9 +5,6 @@
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
 #include <QLocale>
-#include <QWidget>
-#include <QTextEdit>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

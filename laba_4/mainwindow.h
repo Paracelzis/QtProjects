@@ -18,10 +18,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private slots:
-    void on_PushButton_Clicked();
     void on_TextChange(QString);
+    void on_RadioButton_Clicked();
 private:
     Ui::MainWindow *ui;
+    bool prov();
     QRegularExpressionValidator validator;
 };
 #endif // MAINWINDOW_H

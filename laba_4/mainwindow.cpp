@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
@@ -12,24 +11,29 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->quantity->setValidator(&validator);
 
-
-    connect(ui->resultButton, &QPushButton::clicked,this,&MainWindow::on_PushButton_Clicked);
     connect(ui->quantity, &QLineEdit::textChanged,this,&MainWindow::on_TextChange);
 
-    connect(ui->little, &QRadioButton::windowIconTextChanged,this,&MainWindow::on_TextChange);
-    connect(ui->medium, &QRadioButton::windowIconTextChanged,this,&MainWindow::on_TextChange);
-    connect(ui->large, &QRadioButton::windowIconTextChanged,this,&MainWindow::on_TextChange);
-    connect(ui->glossy, &QRadioButton::windowIconTextChanged,this,&MainWindow::on_TextChange);
-    connect(ui->matte, &QRadioButton::windowIconTextChanged,this,&MainWindow::on_TextChange);
-
+    connect(ui->little, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
+    connect(ui->medium, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
+    connect(ui->large, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
+    connect(ui->glossy, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
+    connect(ui->matte, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
 }
 
-void MainWindow::on_PushButton_Clicked()
+void MainWindow::on_RadioButton_Clicked()
 {
-    QLocale comma(QLocale::Russian);
     double quantity, total;
 
-    quantity = ui->quantity->text().toInt();
+    quantity = ui->quantity->text().toDouble();
+
+    if (ui->little->isChecked() == false and ui->medium->isChecked() == false and ui->large->isChecked() == false)
+    {
+        return;
+    }
+    if (ui->glossy->isChecked() == false and ui->matte->isChecked() == false)
+    {
+        return;
+    }
 
     if (ui->little->isChecked() && ui->glossy->isChecked())
     {
