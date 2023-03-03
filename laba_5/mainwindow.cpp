@@ -101,19 +101,27 @@ void MainWindow::delete_to_index_pushButton_clicked()
 
         if (index <= vec.size() and index > 0)
         {
-
-            vec.erase(std::remove(vec.begin(),vec.end(), vec.at(index - 1)),vec.end());
-            vec.resize(vec.size() - 1);
-
             ui->initial_collection->clear();
             ui->converted_collection->clear();
 
+            QVector <double> tmp(vec.size() - 1);
+
+            vec.erase(vec.begin() + (index - 1));
+
             QString data;
 
-            for (int i = 0; i < vec.size(); ++i)
+            for (int i = 0; i < vec.size() - 1; i++)
             {
                 data +=  (QString::number(vec[i]) + "\n");
             }
+
+            for (int i = 0; i < vec.size(); i++)
+            {
+               qDebug() << "sex" << vec[i];
+            }
+
+            qDebug() << data;
+
             data_tmp = data;
 
             fill(data);
@@ -139,7 +147,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
 
     for (int i = 0; i < vec.size(); i++)
     {
-        if (vec[i] > 0)
+        if (vec[i] >= 0)
         {
             tmp.push_back(vec[i]);
         }
@@ -152,7 +160,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
 
     QString data2;
 
-    for (int i = 0; i < vec.size(); ++i)
+    for (int i = 0; i < vec.size() - 1; ++i)
     {
         data2 +=  (QString::number(vec[i]) + "\n");
     }
@@ -169,7 +177,7 @@ void MainWindow::fill(QString data)
     foreach (const QString &str, list)
     {
         vec << str.toDouble();
-        qDebug() << "Element vec:" << str;
+        //qDebug() << "Element vec:" << str;
     }
 
 
