@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFile>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,6 +18,10 @@ public:
     ~MainWindow();
 private slots:
     void on_pushButton_clicked();
+    QString convert_collection(QVector<double>& vec);
+    void on_file_name_currentIndexChanged();
+    void fill(QString data);
+
 private:
     Ui::MainWindow *ui;
 };
