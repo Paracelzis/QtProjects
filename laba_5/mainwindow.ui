@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1107</width>
-    <height>661</height>
+    <width>1120</width>
+    <height>675</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1107</width>
-    <height>661</height>
+    <width>1120</width>
+    <height>675</height>
    </size>
   </property>
   <property name="font">
@@ -31,7 +31,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>420</x>
       <y>310</y>
       <width>311</width>
       <height>71</height>
@@ -53,10 +53,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>20</y>
+      <x>730</x>
+      <y>10</y>
       <width>381</width>
-      <height>551</height>
+      <height>601</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -157,10 +157,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>20</y>
+      <x>420</x>
+      <y>10</y>
       <width>311</width>
-      <height>71</height>
+      <height>81</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -179,10 +179,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>100</y>
+      <x>420</x>
+      <y>90</y>
       <width>311</width>
-      <height>81</height>
+      <height>71</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -206,8 +206,8 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>230</y>
+      <x>420</x>
+      <y>240</y>
       <width>311</width>
       <height>71</height>
      </rect>
@@ -221,17 +221,17 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit_sum"/>
      </item>
     </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>20</y>
       <width>331</width>
-      <height>571</height>
+      <height>591</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -241,6 +241,19 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Методы контейнера &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>125</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QPushButton" name="show_to_index">
@@ -257,7 +270,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="delete_to_data">
        <property name="text">
         <string>Удалить элем. по значению</string>
        </property>
@@ -284,21 +297,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="AddItem">
        <property name="text">
         <string>Добавить элемент</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="summa">
        <property name="text">
         <string>Сумма элементов</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_6">
+      <widget class="QPushButton" name="sum_chet">
        <property name="text">
         <string>Сумма четных элементов</string>
        </property>
@@ -332,14 +345,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_8">
+      <widget class="QPushButton" name="save_in_file">
        <property name="text">
         <string>Сохранить коллекцию в файле</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_9">
+      <widget class="QPushButton" name="clear_collection">
        <property name="text">
         <string>Очистить коллекцию</string>
        </property>
@@ -347,14 +360,27 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="summa_task2">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>420</y>
+      <width>311</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Сумма по 2 заданию</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1107</width>
-     <height>32</height>
+     <width>1120</width>
+     <height>27</height>
     </rect>
    </property>
   </widget>
