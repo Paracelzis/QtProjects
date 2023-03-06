@@ -351,7 +351,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
 {
     QVector<double> tmp;
 
-    for (unsigned i = vec.size(); i-- > 0; )
+    for (unsigned i = vec.size() - 1; i-- > 0; )
     {
         if (vec[i] < 0)
         {
@@ -359,7 +359,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
         }
     }
 
-    for (int i = 0; i < vec.size(); i++)
+    for (int i = 0; i < vec.size() - 1; i++)
     {
         if (vec[i] == 0)
         {
@@ -367,7 +367,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
         }
     }
 
-    for (int i = 0; i < vec.size(); i++)
+    for (int i = 0; i < vec.size() - 1; i++)
     {
         if (vec[i] > 0)
         {
@@ -382,7 +382,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
 
     QString data2;
 
-    for (int i = 0; i < vec.size() - 1; i++)
+    for (int i = 0; i < vec.size(); i++)
     {
         if (QString::number(vec[i]) != "")
         {

@@ -4,7 +4,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-    validator(QRegularExpression("^[0-9]+$"))
+    validator(QRegularExpression("^[1-9]?[0-9]+$"))
 
 {
     ui->setupUi(this);
@@ -13,14 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->quantity, &QLineEdit::textChanged,this,&MainWindow::on_TextChange);
 
-    connect(ui->little, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
-    connect(ui->medium, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
-    connect(ui->large, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
-    connect(ui->glossy, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
-    connect(ui->matte, &QRadioButton::clicked,this,&MainWindow::on_RadioButton_Clicked);
+    connect(ui->pushButton_result, &QPushButton::clicked,this,&MainWindow::on_pushButton_Clicked);
 }
 
-void MainWindow::on_RadioButton_Clicked()
+void MainWindow::on_pushButton_Clicked()
 {
     double quantity, total;
 
@@ -63,7 +59,6 @@ void MainWindow::on_RadioButton_Clicked()
     }
 
     total *= quantity;
-
 
     QString str;
     str.setNum(total,'g',15);

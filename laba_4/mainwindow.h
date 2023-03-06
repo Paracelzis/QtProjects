@@ -19,10 +19,9 @@ public:
     ~MainWindow();
 private slots:
     void on_TextChange();
-    void on_RadioButton_Clicked();
+    void on_pushButton_Clicked();
 private:
     Ui::MainWindow *ui;
-    bool prov();
     QRegularExpressionValidator validator;
 };
 #endif // MAINWINDOW_H
