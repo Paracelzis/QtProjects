@@ -171,6 +171,22 @@ void MainWindow::summa_pushButton_clicked()
 
 void MainWindow::show_to_index_pushButton_clicked()
 {
+    if (ui->lineEdit_index->text() == "")
+    {
+        QMessageBox messageBox;
+        messageBox.critical(0,"Ошибка!","Введите индекс.");
+        messageBox.setFixedSize(500,200);
+        return;
+    }
+
+    if(ui->initial_collection->count() == 0 or ui->initial_collection->item(0)->text() == "")
+    {
+        QMessageBox messageBox;
+        messageBox.critical(0,"Ошибка!","Исходная коллекция пуста.");
+        messageBox.setFixedSize(500,200);
+        return;
+    }
+
     if (ui->lineEdit_index->text() != "")
     {
         QString element = ui->lineEdit_index->text();
@@ -208,7 +224,7 @@ void MainWindow::delete_to_index_pushButton_clicked()
     else
     {
         QMessageBox messageBox;
-        messageBox.critical(0,"Ошибка!","Индекс больше размера коллекции.");
+        messageBox.critical(0,"Ошибка!","Введите индекс.");
         messageBox.setFixedSize(500,200);
     }
 }
@@ -222,7 +238,7 @@ void MainWindow::delete_to_data_pushButton_clicked()
     else
     {
         QMessageBox messageBox;
-        messageBox.critical(0,"Ошибка!","Индекс больше размера коллекции.");
+        messageBox.critical(0,"Ошибка!","Введите значение элемента.");
         messageBox.setFixedSize(500,200);
     }
 }
@@ -324,6 +340,8 @@ void MainWindow::clear_collection_pushButton_clicked()
     ui->initial_collection->addItem("");
     ui->converted_collection->addItem("");
 
+    ui->file_name->setPlaceholderText("                        Выберите файл");
+
     ui->lineEdit_data->clear();
     ui->lineEdit_index->clear();
     ui->lineEdit_sum->clear();
@@ -333,7 +351,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
 {
     QVector<double> tmp;
 
-    for (unsigned i = vec.size() - 1; i-- > 0; )
+    for (unsigned i = vec.size(); i-- > 0; )
     {
         if (vec[i] < 0)
         {
@@ -341,7 +359,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
         }
     }
 
-    for (int i = 0; i < vec.size() - 1; i++)
+    for (int i = 0; i < vec.size(); i++)
     {
         if (vec[i] == 0)
         {
@@ -349,7 +367,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
         }
     }
 
-    for (int i = 0; i < vec.size() - 1; i++)
+    for (int i = 0; i < vec.size(); i++)
     {
         if (vec[i] > 0)
         {
@@ -364,7 +382,7 @@ QString MainWindow::convert_collection(QVector<double>& vec)
 
     QString data2;
 
-    for (int i = 0; i < vec.size(); ++i)
+    for (int i = 0; i < vec.size() - 1; i++)
     {
         if (QString::number(vec[i]) != "")
         {
