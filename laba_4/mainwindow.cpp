@@ -37,30 +37,32 @@ void MainWindow::on_RadioButton_Clicked()
 
     if (ui->little->isChecked() && ui->glossy->isChecked())
     {
-        total = quantity * 16;
+        total = 16;
     }
     if (ui->little->isChecked() && ui->matte->isChecked())
     {
-        total = quantity * 14;
+        total = 14;
     }
 
     if (ui->medium->isChecked() && ui->glossy->isChecked())
     {
-        total = quantity * 20;
+        total = 20;
     }
     if (ui->medium->isChecked() && ui->matte->isChecked())
     {
-        total = quantity * 18;
+        total = 18;
     }
 
     if (ui->large->isChecked() && ui->glossy->isChecked())
     {
-        total = quantity * 25;
+        total = 25;
     }
     if (ui->large->isChecked() && ui->matte->isChecked())
     {
-        total = quantity * 22;
+        total = 22;
     }
+
+    total *= quantity;
 
 
     QString str;
@@ -69,7 +71,7 @@ void MainWindow::on_RadioButton_Clicked()
     ui->total->setText(str);
 }
 
-void MainWindow::on_TextChange(QString str)
+void MainWindow::on_TextChange()
 {
     ui->total->clear();
 }

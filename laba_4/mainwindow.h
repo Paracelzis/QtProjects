@@ -18,7 +18,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private slots:
-    void on_TextChange(QString);
+    void on_TextChange();
     void on_RadioButton_Clicked();
 private:
     Ui::MainWindow *ui;

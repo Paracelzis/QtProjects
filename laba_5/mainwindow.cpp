@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::take_from_file_pushButton_clicked()
 {
-    QFile file(QFileDialog::getOpenFileName(this,"Выбрать файл", "C:/Users/HOME-PC/Documents/QtProjects/QtProjects/laba_5","TXT File(*.txt)"));
+    QFile file(QFileDialog::getOpenFileName(this,"Выбрать файл", "C:/Users/HP/Documents/QtProjects/QtProjects/laba_5","TXT File(*.txt)"));
 
     QFileInfo fileinfo(file);
     current_path = fileinfo.path();
@@ -504,7 +504,6 @@ void MainWindow::save_in_file_pushButton_clicked()
     }
 }
 
-
 void MainWindow::text_changed()
 {
     ui->lineEdit_data->clear();
@@ -514,5 +513,3 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
