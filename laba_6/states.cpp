@@ -1,9 +1,11 @@
 #include "states.h"
 
+
 States::States(QObject *parent) : QObject(parent)
 {
     actualData = nullptr;
 }
+
 
 States::~States()
 {
@@ -18,20 +20,24 @@ States::~States()
     array.clear();
 }
 
+
 void States::add(Estate *value)
 {
     array.append(value);
 }
+
 
 bool States::hasStates()
 {
     return !(States::array.empty());
 }
 
+
 Estate *States::getActualData()
 {
     return actualData;
 }
+
 
 void States::undo()
 {
@@ -42,9 +48,7 @@ void States::undo()
         emit notifyObservers();
     }
     else
-    {
         actualData = nullptr;
-    }
 }
 
 

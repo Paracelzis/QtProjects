@@ -9,12 +9,25 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    apartmentcalc.cpp \
+    calculationfacade.cpp \
+    cottagecalc.cpp \
     estate.cpp \
+    luxuriousapartmentcalc.cpp \
     main.cpp \
+    states.cpp \
+    townhousecalc.cpp \
     widget.cpp
 
 HEADERS += \
+    myexception.h \
+    apartmentcalc.h \
+    calculationfacade.h \
+    cottagecalc.h \
     estate.h \
+    luxuriousapartmentcalc.h \
+    states.h \
+    townhousecalc.h \
     widget.h
 
 FORMS += \

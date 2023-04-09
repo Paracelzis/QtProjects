@@ -1,8 +1,10 @@
 #include "calculationfacade.h"
 
+
 CalculationFacade::CalculationFacade(QObject *parent) : QObject(parent)
 {
 }
+
 
 int CalculationFacade::getCost(Estate *value)
 {

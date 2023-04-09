@@ -5,6 +5,7 @@ apartmentcalc::apartmentcalc(QObject *parent)
 {
 }
 
+
 int apartmentcalc::getCost(Estate *value)
 {
     return value->getAge();

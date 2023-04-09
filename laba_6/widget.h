@@ -2,20 +2,32 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <states.h>
+#include <estate.h>
+#include <calculationfacade.h>
+#include <myexception.h>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class Widget; }
-QT_END_NAMESPACE
-
+namespace Ui
+{
+class Widget;
+}
 class Widget : public QWidget
 {
     Q_OBJECT
-
 public:
-    Widget(QWidget *parent = nullptr);
+    explicit Widget(QWidget *parent = 0);
     ~Widget();
-
+public slots:
+    void update();
+private slots:
+    void btnCalcPressed();
+    void btnUndoPressed();
+private:
+    Estate *processForm();
+    fillForm(Estate *value);
+    showCost(Estate *value);
 private:
     Ui::Widget *ui;
+    States info;
 };
 #endif // WIDGET_H

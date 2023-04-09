@@ -6,6 +6,7 @@ townhousecalc::townhousecalc(QObject *parent)
 
 }
 
+
 int townhousecalc::getCost(Estate *value)
 {
     return value->getAge() + value->getArea() + value->getResidents();

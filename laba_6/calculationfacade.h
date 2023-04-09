@@ -1,5 +1,6 @@
 #ifndef CALCULATIONFACADE_H
 #define CALCULATIONFACADE_H
+
 #include <QObject>
 #include <estate.h>
 #include <apartmentcalc.h>

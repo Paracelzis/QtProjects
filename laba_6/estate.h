@@ -1,21 +1,26 @@
+// Листинг файла estate.h
 #ifndef ESTATE_H
 #define ESTATE_H
 #include <QObject>
-
 class Estate : public QObject
 {
     Q_OBJECT
 public:
-    enum EstateType
-    {
+    enum EstateType {
         ECONOM,
         LUXURIOUS,
         TOWN_HOUSE,
         COTTAGE
     };
+    Estate(const int age, const int area, const int residents,
+           const int months, const EstateType type, const QString owner);
     explicit Estate(QObject *parent = nullptr);
     EstateType getType() const;
-
+    int getAge() const;
+    int getArea() const;
+    int getResidents() const;
+    int getMonths() const;
+    QString getOwner() const;
 private:
     int age;
     int area;
@@ -24,16 +29,4 @@ private:
     EstateType type;
     QString owner;
 };
-
-Estate::Estate(QString _age, QString _area, QString _residents, QString _months, QString _type, QString _owner)
-
-{
-    age = _age.toInt();
-    area = _area.toInt();
-    residents = _residents.toInt();
-    months = _months.toInt();
-    type = _type.;
-    QString owner;
-
-}
 #endif // ESTATE_H

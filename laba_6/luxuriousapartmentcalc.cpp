@@ -6,6 +6,7 @@ luxuriousapartmentcalc::luxuriousapartmentcalc(QObject *parent)
 
 }
 
+
 int luxuriousapartmentcalc::getCost(Estate *value)
 {
     return value->getAge() + value->getResidents();
