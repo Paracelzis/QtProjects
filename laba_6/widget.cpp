@@ -23,12 +23,10 @@ void Widget::update()
     if(value != nullptr){
         fillForm(value);
     }
-    // update btnUndo state
     ui->btnUndo->setEnabled(info.hasStates());
-    // setting value to NULL
     value = nullptr;
 }
-// private slots
+
 void Widget::btnCalcPressed()
 {
     try {
@@ -60,12 +58,15 @@ void Widget::btnUndoPressed()
         info.undo();
     }
 }
-// private
+
+//Задание 4
 Estate *Widget::processForm()
 {
     return new Estate();
 }
-Widget::fillForm(Estate *value)
+
+//Задание 4
+void Widget::fillForm(Estate *value)
 {
     ui->age->setText(QString::number(info.getActualData()->getAge()));
     ui->area->setText(QString::number(info.getActualData()->getArea()));
@@ -98,8 +99,8 @@ Widget::fillForm(Estate *value)
     ui->cost->setText(QString::number(CalculationFacade::getCost(info.getActualData())));
 }
 
-
-Widget::showCost(Estate *value)
+//Задание 4
+void Widget::showCost(Estate *value)
 {
     ui->cost->setText(QString::number(CalculationFacade::getCost(value)));
 }

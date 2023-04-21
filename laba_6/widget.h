@@ -23,9 +23,9 @@ private slots:
     void btnCalcPressed();
     void btnUndoPressed();
 private:
-    Estate *processForm();
-    fillForm(Estate *value);
-    showCost(Estate *value);
+    Estate *processForm(); //Задание 4
+    void fillForm(Estate *value); //Задание 4
+    void showCost(Estate *value); //Задание 4
 private:
     Ui::Widget *ui;
     States info;

@@ -1,7 +1,8 @@
-// Листинг файла estate.h
 #ifndef ESTATE_H
 #define ESTATE_H
+
 #include <QObject>
+
 class Estate : public QObject
 {
     Q_OBJECT
@@ -13,14 +14,14 @@ public:
         COTTAGE
     };
     Estate(const int age, const int area, const int residents,
-           const int months, const EstateType type, const QString owner);
+           const int months, const EstateType type, const QString owner); // Задание 1
     explicit Estate(QObject *parent = nullptr);
-    EstateType getType() const;
-    int getAge() const;
-    int getArea() const;
-    int getResidents() const;
-    int getMonths() const;
-    QString getOwner() const;
+    EstateType getType() const; // Задание 1
+    int getAge() const; // Задание 1
+    int getArea() const; // Задание 1
+    int getResidents() const; // Задание 1
+    int getMonths() const; // Задание 1
+    QString getOwner() const; // Задание 1
 private:
     int age;
     int area;

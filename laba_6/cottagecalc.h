@@ -9,7 +9,7 @@ class cottagecalc : public QObject
     Q_OBJECT
 public:
     explicit cottagecalc(QObject *parent = nullptr);
-    static int getCost(Estate *value);
+    static int getCost(Estate *value); //Задание 3
 
 signals:
 

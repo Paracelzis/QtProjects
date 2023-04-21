@@ -10,10 +10,10 @@ class States : public QObject
 public:
     explicit States(QObject *parent = nullptr);
     ~States();
-    void undo();
-    bool hasStates();
-    Estate *getActualData();
-    void add(Estate *value);
+    void undo(); // Задание 2
+    bool hasStates(); // Задание 2
+    Estate *getActualData(); // Задание 2
+    void add(Estate *value); // Задание 2
     int getSize();
 signals:
     void notifyObservers();

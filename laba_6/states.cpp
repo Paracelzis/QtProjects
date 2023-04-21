@@ -9,36 +9,34 @@ States::States(QObject *parent) : QObject(parent)
 
 States::~States()
 {
-    // delete: actualData
     if(actualData)
     {
     delete actualData;
     actualData = nullptr;
     }
-    // delete and clear: array
     qDeleteAll(array);
     array.clear();
 }
 
-
+// Задание 2
 void States::add(Estate *value)
 {
     array.append(value);
 }
 
-
+// Задание 2
 bool States::hasStates()
 {
     return !(States::array.empty());
 }
 
-
+// Задание 2
 Estate *States::getActualData()
 {
     return actualData;
 }
 
-
+// Задание 2
 void States::undo()
 {
     if (hasStates())

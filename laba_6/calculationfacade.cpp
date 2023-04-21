@@ -5,7 +5,7 @@ CalculationFacade::CalculationFacade(QObject *parent) : QObject(parent)
 {
 }
 
-
+//Задание 3
 int CalculationFacade::getCost(Estate *value)
 {
     int cost;

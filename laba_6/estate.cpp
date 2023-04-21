@@ -12,7 +12,7 @@ Estate::Estate(QObject *parent)
     type = Estate::ECONOM;
 }
 
-
+// Задание 1
 Estate::Estate(const int age, const int area, const int residents,
         const int months, const EstateType type, const QString owner)
 {
@@ -24,37 +24,37 @@ Estate::Estate(const int age, const int area, const int residents,
     this->type = type;
 }
 
-
+// Задание 1
 Estate::EstateType Estate::getType() const
 {
     return this->type;
 }
 
-
+// Задание 1
 int Estate::getAge() const
 {
     return this->age;
 }
 
-
+// Задание 1
 int Estate::getArea() const
 {
     return this->area;
 }
 
-
+// Задание 1
 int Estate::getResidents() const
 {
     return this->residents;
 }
 
-
+// Задание 1
 int Estate::getMonths() const
 {
     return this->months;
 }
 
-
+// Задание 1
 QString Estate::getOwner() const
 {
     return this->owner;
