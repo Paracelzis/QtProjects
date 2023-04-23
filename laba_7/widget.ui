@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>438</width>
+    <height>309</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>438</width>
+    <height>309</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Макаров Андрей 4133K</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>13</y>
+     <width>417</width>
+     <height>280</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="nameLabel">
+            <property name="text">
+             <string>Имя:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="ageLabel">
+            <property name="text">
+             <string>Возраст:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="estateTypeLabel">
+            <property name="text">
+             <string>Класс жилья:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="residetnsLabel">
+            <property name="text">
+             <string>Число проживающих:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="areaLabel">
+            <property name="text">
+             <string>Площадь:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="periodLabel">
+            <property name="text">
+             <string>Срок страхования: </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLineEdit" name="nameEdit">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>Макаров Андрей</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="ageEdit">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>19</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="estateTypeBox">
+            <item>
+             <property name="text">
+              <string>Квартира эконом-класса</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Элитная квартира</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Таун-хаус</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Коттедж</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="residentsEdit">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="areaEdit">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>25</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="periodBox">
+            <item>
+             <property name="text">
+              <string>6 месяцев </string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>12 месяцев</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>18 месяцев</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="costLabel">
+        <property name="text">
+         <string>Стоимость страхового взноса:   0</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="calcButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Рассчитать</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="undoButton">
+        <property name="text">
+         <string>Последний запрос</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
