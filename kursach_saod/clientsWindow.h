@@ -2,11 +2,11 @@
 #define CLIENTSWINDOW_H
 
 #include <QWidget>
-#include <clientsobj.h>
+#include <myhashtable.h>
 #include <clientstree.h>
 #include <addintreedialog.h>
 #include <QMessageBox>
-#include <QSortFilterProxyModel>
+#include <searchengine.h>
 
 namespace Ui {
 class clientsWindow;
@@ -17,9 +17,8 @@ class clientsWindow : public QWidget
     Q_OBJECT
 
 public:
-    explicit clientsWindow(QWidget *parent = nullptr);
+    explicit clientsWindow(clientsTree*& Root, myHashTable*& hashTable, QWidget *parent = nullptr);
     ~clientsWindow();
-    bool isEditing = false;
 signals:
     void menuWindow();
 private slots:
@@ -30,7 +29,7 @@ private slots:
     void on_clearButton_clicked();
     void addClient();
     void editClient();
-    void on_searchEdit_textChanged(const QString &searchText);
+    void on_searchEdit_textChanged();
 private:
     Ui::clientsWindow *ui;
     clientsObj* processForm();
@@ -40,6 +39,7 @@ private:
     void tableReload(clientsTree* Root, int count);
     addInTreeDialog *addDialog;
     clientsTree* Root;
+    myHashTable*& hashTable;
 };
 
 #endif // CLIENTSWINDOW_H

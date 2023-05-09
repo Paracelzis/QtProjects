@@ -2,9 +2,11 @@
 #include "ui_clientsWindow.h"
 #include "ui_addintreedialog.h"
 
-clientsWindow::clientsWindow(QWidget *parent) :
+clientsWindow::clientsWindow(clientsTree*& Root, myHashTable*& hashTable, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::clientsWindow)
+    ui(new Ui::clientsWindow),
+    Root(Root),
+    hashTable(hashTable)
 {
     ui->setupUi(this);
     Root = nullptr;
@@ -57,8 +59,7 @@ void clientsWindow::on_editButton_clicked()
         addDialog->ui->birthDateEdit->setText(QString::number(client->getyearBirth()));
         addDialog->exec();
     }
-    catch (myException &err)
-    {
+    catch (myException &err){
         QMessageBox msg;
         msg.setWindowTitle("Ошибка!");
         msg.setFixedSize(500,400);
@@ -68,8 +69,9 @@ void clientsWindow::on_editButton_clicked()
     }
 }
 
-void clientsWindow::on_deleteButton_clicked(){
-    try{
+void clientsWindow::on_deleteButton_clicked()
+{
+    try {
         ui->searchEdit->clear();
         if (ui->clientsTableWidget->currentRow() < 0)
             throw myException("Не выбрана строка для удаления");
@@ -92,7 +94,8 @@ void clientsWindow::on_deleteButton_clicked(){
     }
 }
 
-void clientsWindow::on_clearButton_clicked(){
+void clientsWindow::on_clearButton_clicked()
+{
     ui->searchEdit->clear();
     Root->clearTree(Root);
     Root = NULL;
@@ -100,7 +103,8 @@ void clientsWindow::on_clearButton_clicked(){
     ui->clientsTableWidget->setRowCount(0);
 }
 
-void clientsWindow::addClient(){
+void clientsWindow::addClient()
+{
     try {
         auto value = processForm();
         clientsTree* tmp = Root->findKey(Root, value->getpassportNumber().remove(4, 1).toLongLong());
@@ -115,8 +119,7 @@ void clientsWindow::addClient(){
         ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
         ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
     }
-    catch(myException& error)
-    {
+    catch(myException& error){
         QMessageBox msg;
         msg.setWindowTitle("Ошибка!");
         msg.setFixedSize(500,400);
@@ -135,13 +138,17 @@ void clientsWindow::editClient()
 }
 
 
-clientsObj* clientsWindow::processForm(){
-    return new clientsObj(addDialog->ui->passportNumEdit->text(), addDialog->ui->placeAndDateEdit->text(),
-                            addDialog->ui->nameEdit->text(), addDialog->ui->birthDateEdit->text().toInt(),
-                            addDialog->ui->adressEdit->text());
+clientsObj* clientsWindow::processForm()
+{
+    return new clientsObj(addDialog->ui->passportNumEdit->text(),
+                          addDialog->ui->placeAndDateEdit->text(),
+                          addDialog->ui->nameEdit->text(),
+                          addDialog->ui->birthDateEdit->text().toInt(),
+                          addDialog->ui->adressEdit->text());
 }
 
-void clientsWindow::tableReload(clientsTree* Root, int count){
+void clientsWindow::tableReload(clientsTree* Root, int count)
+{
     if (!Root) return;
     this->client = Root->getClient(Root);
     ui->clientsTableWidget->insertRow(count);
@@ -160,42 +167,33 @@ void clientsWindow::tableReload(clientsTree* Root, int count){
     tableReload(Root->getLeft(Root), count + 1);
 }
 
-
-
-void clientsWindow::on_searchEdit_textChanged(const QString& arg1) {
-
-    QString searchText = arg1;
-    int columnIndex = ui->searchComboBox->currentIndex() + 2;
-
-    for (int i = 0; i < ui->clientsTableWidget->rowCount(); i++)
+void clientsWindow::on_searchEdit_textChanged()
+{
+    QString line;
+    if (ui->searchEdit->text().length() == 0)
     {
-        ui->clientsTableWidget->setRowHidden(i, true);
+        ui->clientsTableWidget->clearContents();
+        ui->clientsTableWidget->setRowCount(0);
+        tableReload(Root, 0);
+        ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
+        ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
+        return;
     }
-
-    // Ищем строки, удовлетворяющие условию поиска
-    for (int i = 0; i < ui->clientsTableWidget->rowCount(); i++) {
-        bool match = false;
-        QTableWidgetItem* item = ui->clientsTableWidget->item(i, columnIndex);
-        if (item) {
-            QString cellText = item->text();
-            int j = 0;
-            while (j <= cellText.length() - searchText.length()) {
-                int k = 0;
-                while (k < searchText.length() && searchText[k] == cellText[j + k]) {
-                    k++;
-                }
-                if (k == searchText.length()) {
-                    match = true;
-                    break;
-                }
-                j++;
-            }
-            if (j == cellText.length() - searchText.length() + 1 && !match) {
-                match = searchText.isEmpty(); // Если текст пустой, то считаем, что совпадение есть
-            }
+    if (ui->searchComboBox->currentIndex() == 0)
+    {
+        for (int row = 0; row < ui->clientsTableWidget->rowCount(); row++)
+        {
+            QTableWidgetItem *item = ui->clientsTableWidget->item(row, 2);
+            clientsTree* value = Root->findKey(Root, item->text().remove(4,1).toLongLong());
+            if (!item) continue;
+            client = value->getClient(value);
+            ui->searchComboBox->currentIndex() == 0 ? line = client->getpassportNumber() : line = client->getName();
+            QString line = client->getpassportNumber();
+            QVector<int> occurrences = searchEngine::directSearch(line, ui->searchEdit->text());
+            if (!occurrences.empty())
+                ui->clientsTableWidget->showRow(row);
+            else
+                ui->clientsTableWidget->hideRow(row);
         }
-        ui->clientsTableWidget->setRowHidden(i, !match);
     }
 }
-
-

@@ -36,22 +36,7 @@
            </item>
            <item>
             <property name="text">
-             <string>Месту и дате выдачи паспорта</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
              <string>ФИО</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Году рождения </string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Адресу</string>
             </property>
            </item>
           </widget>

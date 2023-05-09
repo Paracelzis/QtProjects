@@ -27,6 +27,8 @@ private slots:
 
 private:
     Ui::menu *ui;
+    clientsTree* Root = NULL;
+    myHashTable* hashTable = new myHashTable();
     clientsWindow *clientsWindow_1;
     infosimWindow *infosimWindow_1;
     issueorrefundsimWindow *issueorrefundsimWindow_1;

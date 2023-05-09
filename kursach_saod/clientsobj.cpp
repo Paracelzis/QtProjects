@@ -8,6 +8,8 @@ clientsObj::clientsObj(QObject *parent)
 
 clientsObj::clientsObj(const QString passportNumber, const QString PlaceAndDatePassport, const QString Name, const int yearBirth, const QString adress)
 {
+    if (passportNumber.size() < 10 || PlaceAndDatePassport == "" || Name == "" || yearBirth == 0 || adress == "")
+        throw myException("Поля формы заполнены некорректно.");
     this-> passportNumber = passportNumber;
     this-> PlaceAndDatePassport = PlaceAndDatePassport;
     this-> Name = Name;

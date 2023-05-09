@@ -8,8 +8,8 @@ menu::menu(QWidget *parent)
     ui->setupUi(this);
     // Инициализируем второе окно
 
-    clientsWindow_1 = new clientsWindow();
-    infosimWindow_1 = new infosimWindow();
+    clientsWindow_1 = new clientsWindow(this->Root, this->hashTable);
+    infosimWindow_1 = new infosimWindow(this->Root, this->hashTable);
     issueorrefundsimWindow_1 = new issueorrefundsimWindow();
 
     // подключаем к слоту запуска главного окна по кнопке во втором окне
