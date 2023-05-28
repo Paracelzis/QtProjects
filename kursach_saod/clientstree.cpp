@@ -139,16 +139,22 @@ clientsTree* clientsTree::remove(clientsTree* node, long long k) // удален
     return balance(node);
 }
 
-clientsTree* clientsTree::findKey(clientsTree* node, long long k) // поиск узла с ключом k в дереве node
+clientsTree* clientsTree::findKey(clientsTree* node, long long key) // поиск узла с ключом k в дереве node
 {
     if (!node)
-        return 0;
-    if (k < node->key)
-        return findKey(node->left,k);
-    else if ( k > node->key )
-        return findKey(node->right,k);
-    else
+        return NULL;
+    if (key == node->key)
         return node;
+    if (key < node->key) {
+        if (node->left == NULL)
+            return NULL;
+        findKey(node->left, key);
+    }
+    else {
+        if (node->right == NULL)
+            return NULL;
+        findKey(node->right, key);
+    }
 }
 
 void clientsTree::clearTree(clientsTree* node){
@@ -156,4 +162,12 @@ void clientsTree::clearTree(clientsTree* node){
     clearTree(node->left);
     clearTree(node->right);
     delete node;
+}
+
+void clientsTree::clientsToList(clientsTree* node, QStringList *list){
+    if (!node) return;
+    this->client = node->getClient(node);
+    list->append(client->getpassportNumber());
+    clientsToList(node->getRight(node), list);
+    clientsToList(node->getLeft(node), list);
 }

@@ -26,3 +26,5 @@ QVector<int> searchEngine::directSearch(QString text, QString pattern)
     }
     return occurrences;
 }
+
+

@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     addinhashdialog.cpp \
+    addinlistdialog.cpp \
     addintreedialog.cpp \
     clientsWindow.cpp \
     clientsobj.cpp \
@@ -17,14 +18,19 @@ SOURCES += \
     infosimWindow.cpp \
     infosimobj.cpp \
     issueorrefundsimWindow.cpp \
+    issueorrefundsimobj.cpp \
     main.cpp \
     menu.cpp \
     myhashtable.cpp \
+    mylist.cpp \
+    mylistnode.cpp \
     searchengine.cpp
 
 HEADERS += \
     addinhashdialog.h \
+    addinlistdialog.h \
     infosimobj.h \
+    issueorrefundsimobj.h \
     myexception.h \
     addintreedialog.h \
     clientsWindow.h \
@@ -34,10 +40,13 @@ HEADERS += \
     issueorrefundsimWindow.h \
     menu.h \
     myhashtable.h \
+    mylist.h \
+    mylistnode.h \
     searchengine.h
 
 FORMS += \
     addinhashdialog.ui \
+    addinlistdialog.ui \
     addintreedialog.ui \
     clientsWindow.ui \
     infosimWindow.ui \

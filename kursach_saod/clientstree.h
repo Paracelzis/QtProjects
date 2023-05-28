@@ -24,6 +24,7 @@ public:
     clientsTree* remove(clientsTree* node, long long k);
     clientsTree* findKey(clientsTree* node, long long k);
     void clearTree(clientsTree* node);
+    void clientsToList(clientsTree* node, QStringList* list);
 private:
     long long key;
     int height;

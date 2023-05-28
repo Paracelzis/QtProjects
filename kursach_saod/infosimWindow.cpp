@@ -2,14 +2,17 @@
 #include "ui_addinhashdialog.h"
 #include "ui_infosimWindow.h"
 
-infosimWindow::infosimWindow(clientsTree *&Root, myHashTable *&hashTable, QWidget *parent):
+infosimWindow::infosimWindow(clientsTree*& Root, myHashTable*& hashTable, mylist*& List, QWidget *parent):
     QWidget(parent),
     ui(new Ui::infosimWindow),
     hashTable(hashTable),
+    List(List),
     Root(Root)
 {
     ui->setupUi(this);
     addDialog = new addinhashdialog();
+
+    tableReload();
 
     connect(ui->searchEdit, &QLineEdit::textChanged, this, &infosimWindow::on_searchEdit_textChanged);
 
@@ -27,6 +30,11 @@ void infosimWindow::on_menuExitButton_clicked()
 {
     this->close();
     emit menuWindow();
+}
+
+void infosimWindow::showEvent(QShowEvent *event){
+    QWidget::showEvent(event);
+    tableReload();
 }
 
 void infosimWindow::on_searchEdit_textChanged()
@@ -67,6 +75,9 @@ void infosimWindow::on_addButton_clicked()
     ui->searchEdit->clear();
     QPushButton* pressed = (QPushButton* )sender();
     addDialog->sender = pressed;
+    addDialog->ui->simNumberEdit->clear();
+    addDialog->ui->rateEdit->clear();
+    addDialog->ui->yearEdit->clear();
     addDialog->exec();
 }
 
@@ -83,6 +94,7 @@ void infosimWindow::addSIM()
         ui->infoSimTableWidget->setRowCount(0);
         tableReload();
         ui->infoSimTableWidget->sortByColumn(0, Qt::AscendingOrder);
+        emit addinList(value->getsimNumber());
     }
     catch(myException& error){
         QMessageBox msg;
@@ -96,7 +108,10 @@ void infosimWindow::addSIM()
 
 void infosimWindow::tableReload()
 {
-    if (hashTable->isEmpty()) return;
+    if (hashTable->isEmpty())
+        return;
+    ui->infoSimTableWidget->clearContents();
+    ui->infoSimTableWidget->setRowCount(0);
     int count = 0;
     for (int i = 0; i < hashTable->capacity; i++)
     {
@@ -117,11 +132,26 @@ void infosimWindow::on_deleteButton_clicked(){
         if (ui->infoSimTableWidget->currentRow() < 0)
             throw myException("Не выбрана строка для удаления");
         auto what = ui->infoSimTableWidget->item(ui->infoSimTableWidget->currentRow(), 0);
+        auto appearence = List->find(what->text());
+        if (appearence != NULL){
+            QMessageBox foundInMoves;
+            foundInMoves.setWindowTitle("Внимание!");
+            foundInMoves.setText("Эта SIM-карта уже принадлежит клиенту. Удаление этой SIM-карты приведет к удалению записей в таблице о выдаче/возврате.");
+            QAbstractButton* yesButton = foundInMoves.addButton(tr("Удалить"), QMessageBox::YesRole);
+            QAbstractButton* noButton = foundInMoves.addButton(tr("Отмена"), QMessageBox::NoRole);
+            foundInMoves.exec();
+            if (foundInMoves.clickedButton() == yesButton){
+                List->remove(appearence->getSimNumber());
+                emit toReloadTable();
+            }
+            else return;
+        }
         hashTable->deleteNode(what->text());
         ui->infoSimTableWidget->clearContents();
         ui->infoSimTableWidget->setRowCount(0);
         tableReload();
         ui->infoSimTableWidget->sortByColumn(0, Qt::AscendingOrder);
+        emit removefromList(what->text());
     }
     catch (myException &err){
         QMessageBox msg;
@@ -166,11 +196,17 @@ void infosimWindow::editSIM()
     try {
         auto what = ui->infoSimTableWidget->item(ui->infoSimTableWidget->currentRow(), 0);
         QString number = addDialog->ui->simNumberEdit->text();
+        const QString oldnumber = what->text();
         infosimObj* tmp = hashTable->search(number);
         if (tmp != NULL && tmp->getsimNumber() != what->text())
             throw myException("Номер SIM-карты должен быть уникален.");
-        hashTable->deleteNode(what->text());
+        hashTable->deleteNode(oldnumber);
         addSIM();
+        if (number != oldnumber){
+            List->findandSet(oldnumber, number);
+            emit removefromList(oldnumber);
+            emit toReloadTable();
+        }
     }
     catch (myException &ex){
         QMessageBox msg;
@@ -185,9 +221,22 @@ void infosimWindow::editSIM()
 void infosimWindow::on_clearButton_clicked()
 {
     ui->searchEdit->clear();
+
     if (hashTable->isEmpty()) return;
-    hashTable->clear();
-    ui->infoSimTableWidget->clearContents();
-    ui->infoSimTableWidget->setRowCount(0);
+    QMessageBox warning;
+    warning.setWindowTitle("Внимание!");
+    warning.setText("Очистка этой таблицы приведет к очистке таблицы выдачи/возврата, вы уверены?");
+    QAbstractButton* yesButton = warning.addButton(tr("Удалить"), QMessageBox::YesRole);
+    warning.addButton(tr("Отмена"), QMessageBox::NoRole);
+    warning.exec();
+    if (warning.clickedButton() == yesButton){
+        hashTable->clear();
+        ui->infoSimTableWidget->clearContents();
+        ui->infoSimTableWidget->setRowCount(0);
+        List->deleteList();
+        emit toReloadTable();
+        emit toClear();
+    }
+    else return;
 }
 

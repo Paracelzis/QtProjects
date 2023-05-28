@@ -2,11 +2,12 @@
 #include "ui_clientsWindow.h"
 #include "ui_addintreedialog.h"
 
-clientsWindow::clientsWindow(clientsTree*& Root, myHashTable*& hashTable, QWidget *parent) :
+clientsWindow::clientsWindow(clientsTree*& Root, myHashTable*& hashTable, mylist*& List, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::clientsWindow),
     Root(Root),
-    hashTable(hashTable)
+    hashTable(hashTable),
+    List(List)
 {
     ui->setupUi(this);
     Root = nullptr;
@@ -35,8 +36,8 @@ void clientsWindow::on_menuExitButton_clicked()
 void clientsWindow::on_addButton_clicked()
 {
     ui->searchEdit->clear();
-    QPushButton* adder = (QPushButton*) sender();
-    addDialog->sender = adder;
+    QPushButton* pressed = (QPushButton*) sender();
+    addDialog->sender = pressed;
     addDialog->exec();
 }
 
@@ -76,13 +77,33 @@ void clientsWindow::on_deleteButton_clicked()
         if (ui->clientsTableWidget->currentRow() < 0)
             throw myException("Не выбрана строка для удаления");
         auto what = ui->clientsTableWidget->item(ui->clientsTableWidget->currentRow(), 2);
+        QString passport = what->text();
         long long key = what->text().remove(4, 1).toLongLong();
+        auto appearence = List->searchElement(passport);
+        if (appearence.size() != 0)
+        {
+            QMessageBox foundInMoves;
+            foundInMoves.setWindowTitle("Внимание!");
+            foundInMoves.setText("У этого пользователя есть SIM-карты. Удаление этого пользователя приведет к удалению записей о выдаче/возврате.");
+            QAbstractButton* yesButton = foundInMoves.addButton(tr("Удалить"), QMessageBox::YesRole);
+            QAbstractButton* noButton = foundInMoves.addButton(tr("Отмена"), QMessageBox::NoRole);
+            foundInMoves.exec();
+            if (foundInMoves.clickedButton() == yesButton){
+                for (int i = 0; i < appearence.size(); i++){
+                    List->remove(appearence[i]->getSimNumber());
+                }
+                emit toReloadTable();
+            }
+            else return;
+        }
+
         Root = Root->remove(Root, key);
         ui->clientsTableWidget->clearContents();
         ui->clientsTableWidget->setRowCount(0);
         tableReload(Root, 0);
         ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
         ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
+        emit removefromStringList(what->text());
     }
     catch (myException &err){
         QMessageBox msg;
@@ -97,10 +118,23 @@ void clientsWindow::on_deleteButton_clicked()
 void clientsWindow::on_clearButton_clicked()
 {
     ui->searchEdit->clear();
-    Root->clearTree(Root);
-    Root = NULL;
-    ui->clientsTableWidget->clearContents();
-    ui->clientsTableWidget->setRowCount(0);
+    if (!Root) return;
+    QMessageBox warning;
+    warning.setWindowTitle("Внимание!");
+    warning.setText("Очистка этой таблицы приведет к очистке таблицы выдачи/возврата, вы уверены?");
+    QAbstractButton* yesButton = warning.addButton(tr("Удалить"), QMessageBox::YesRole);
+    warning.addButton(tr("Отмена"), QMessageBox::NoRole);
+    warning.exec();
+    if (warning.clickedButton() == yesButton){
+        Root->clearTree(Root);
+        Root = NULL;
+        ui->clientsTableWidget->clearContents();
+        ui->clientsTableWidget->setRowCount(0);
+        List->deleteList();
+        emit toReloadTable();
+        emit toClear();
+    }
+    else return;
 }
 
 void clientsWindow::addClient()
@@ -118,6 +152,7 @@ void clientsWindow::addClient()
         tableReload(Root, 0);
         ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
         ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
+        emit addtoStringList(value->getpassportNumber());
     }
     catch(myException& error){
         QMessageBox msg;
@@ -131,10 +166,42 @@ void clientsWindow::addClient()
 
 void clientsWindow::editClient()
 {
-    auto what = ui->clientsTableWidget->item(ui->clientsTableWidget->currentRow(), 2);
-    long long key = what->text().remove(4, 1).toLongLong();
-    Root = Root->remove(Root, key);
-    addClient();
+    try{
+        auto what = ui->clientsTableWidget->item(ui->clientsTableWidget->currentRow(), 2);
+        QString passport = what->text();
+        const long long clientNumber = what->text().remove(4, 1).toLongLong();
+        QString newNumber = addDialog->ui->passportNumEdit->text();
+        auto occurs = List->searchElement(passport);
+        if (occurs.size() != 0 && newNumber != what->text()){
+            QMessageBox foundInMoves;
+            foundInMoves.setWindowTitle("Внимание!");
+            foundInMoves.setText("Изменение номера паспорта этого клиента приведет к удалению всех записей с ним "
+                                 "в таблице выдачи/возврата, вы уверены?");
+            QAbstractButton* yesButton = foundInMoves.addButton(tr("Да"), QMessageBox::YesRole);
+            foundInMoves.addButton(tr("Отмена"), QMessageBox::NoRole);
+            foundInMoves.exec();
+            if (foundInMoves.clickedButton() == yesButton){
+                for (int i = 0; i < occurs.size(); i++){
+                    List->remove(occurs[i]->getSimNumber());
+                }
+                emit removefromStringList(what->text());
+                emit toReloadTable();
+            }
+            else
+                return;
+        }
+        Root = Root->remove(Root, clientNumber);
+        addClient();
+        emit editClientList();
+    }
+    catch (myException& ex){
+        QMessageBox msg;
+        msg.setWindowTitle("Ошибка!");
+        msg.setFixedSize(500,400);
+        msg.setText(ex.what());
+        msg.exec();
+        return;
+    }
 }
 
 
@@ -179,21 +246,18 @@ void clientsWindow::on_searchEdit_textChanged()
         ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
         return;
     }
-    if (ui->searchComboBox->currentIndex() == 0)
+
+    for (int row = 0; row < ui->clientsTableWidget->rowCount(); row++)
     {
-        for (int row = 0; row < ui->clientsTableWidget->rowCount(); row++)
-        {
-            QTableWidgetItem *item = ui->clientsTableWidget->item(row, 2);
-            clientsTree* value = Root->findKey(Root, item->text().remove(4,1).toLongLong());
-            if (!item) continue;
-            client = value->getClient(value);
-            ui->searchComboBox->currentIndex() == 0 ? line = client->getpassportNumber() : line = client->getName();
-            QString line = client->getpassportNumber();
-            QVector<int> occurrences = searchEngine::directSearch(line, ui->searchEdit->text());
-            if (!occurrences.empty())
-                ui->clientsTableWidget->showRow(row);
-            else
-                ui->clientsTableWidget->hideRow(row);
-        }
+        QTableWidgetItem *item = ui->clientsTableWidget->item(row, 2);
+        clientsTree* value = Root->findKey(Root, item->text().remove(4,1).toLongLong());
+        if (!item) continue;
+        clientsObj* client = value->getClient(value);
+        ui->searchComboBox->currentIndex() == 0 ? line = client->getpassportNumber() : line = client->getName();
+        QVector<int> occurrences = searchEngine::directSearch(line, ui->searchEdit->text());
+        if (!occurrences.empty())
+            ui->clientsTableWidget->showRow(row);
+        else
+            ui->clientsTableWidget->hideRow(row);
     }
 }

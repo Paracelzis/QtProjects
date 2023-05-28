@@ -2,6 +2,7 @@
 #define INFOSIMOBJ_H
 
 #include <QObject>
+#include "myexception.h"
 
 class infosimObj: public QObject
 {
@@ -13,10 +14,11 @@ public:
     QString getRate();
     int getYear();
     bool getIsThere();
+
+    bool isThere;
 private:
     QString simNumber, rate;
     int year;
-    bool isThere;
 };
 
 
