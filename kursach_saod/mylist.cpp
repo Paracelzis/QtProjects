@@ -96,13 +96,17 @@ issueorrefundsimObj* mylist::find(QString data)  {
 QVector<issueorrefundsimObj*> mylist::searchElement(QString key){
     QVector<issueorrefundsimObj*> occurances;
     myListNode* current = head;
-    while (current && current->data->getPassportNumber() != key) {
-        current = current->next;
+
+    do {
+        if (current->data->getPassportNumber() == key){
+            occurances.push_back(current->data);
+            current = current->next;
+        }
+        else
+            current = current->next;
     }
-    while (current && current->data->getPassportNumber() == key) {
-        occurances.push_back(current->data);
-        current = current->next;
-    }
+    while (current != head);
+
     return occurances;
 }
 
