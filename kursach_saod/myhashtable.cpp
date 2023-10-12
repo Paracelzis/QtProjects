@@ -27,13 +27,13 @@ void myHashTable::insertNode(infosimObj* human)
     {
         key = (key + counter) % capacity;
         counter++;
-        //qDebug() << key;
+        qDebug() << key;
     }
     if (arr[key] == NULL || arr[key]->getYear() == -1)
     {
         size++;
         arr[key] = human;
-        //qDebug() << key;
+        qDebug() << key;
     }
 }
 

@@ -101,8 +101,8 @@ void clientsWindow::on_deleteButton_clicked()
         ui->clientsTableWidget->clearContents();
         ui->clientsTableWidget->setRowCount(0);
         tableReload(Root, 0);
-        ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
-        ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
+//        ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
+//        ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
         emit removefromStringList(what->text());
     }
     catch (myException &err){
@@ -150,8 +150,8 @@ void clientsWindow::addClient()
         ui->clientsTableWidget->clearContents();
         ui->clientsTableWidget->setRowCount(0);
         tableReload(Root, 0);
-        ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
-        ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
+//        ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
+//        ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
         emit addtoStringList(value->getpassportNumber());
     }
     catch(myException& error){
@@ -242,8 +242,8 @@ void clientsWindow::on_searchEdit_textChanged()
         ui->clientsTableWidget->clearContents();
         ui->clientsTableWidget->setRowCount(0);
         tableReload(Root, 0);
-        ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
-        ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
+//        ui->clientsTableWidget->sortByColumn(1, Qt::AscendingOrder);
+//        ui->clientsTableWidget->sortByColumn(0, Qt::AscendingOrder);
         return;
     }
 
