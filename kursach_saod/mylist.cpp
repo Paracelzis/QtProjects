@@ -94,8 +94,14 @@ issueorrefundsimObj* mylist::find(QString data)  {
 
 
 QVector<issueorrefundsimObj*> mylist::searchElement(QString key){
+
     QVector<issueorrefundsimObj*> occurances;
     myListNode* current = head;
+
+    if (current == NULL)
+    {
+        return occurances;
+    }
 
     do {
         if (current->data->getPassportNumber() == key){
