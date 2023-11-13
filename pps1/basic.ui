@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>basic</class>
+ <widget class="QDialog" name="basic">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1384</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>1368</width>
+     <height>491</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QTableWidget" name="tableWidget_2">
+      <column>
+       <property name="text">
+        <string>Название поля</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Дата исследования</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Тип растений</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Количество растений</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Мультиспектральный датчик</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Температурный датчик</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Датчик влажности </string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Датчик света</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string> Анализ данных</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="text">
+         <string>Выбрать файл</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="text">
+         <string>Выход</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
